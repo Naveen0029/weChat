@@ -5,7 +5,11 @@
     height: 70px;
 
 }
-
+#name_bar{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
 h1{
     margin-top: 12px;
     font-size: 30px;

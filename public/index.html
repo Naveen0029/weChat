@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weChat-Realtime Node Socket.io chat app</title>
     
-    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="./js/client.js"></script>
     <link rel="stylesheet" href="./css/style.css"> 
 </head>
@@ -16,7 +16,12 @@
         <h1>Welcome to weChat app</h1>
          
     </nav>
-    <div class="container">
+    <div id="name_bar" style="display: block;">
+        <label>Enter the name</label>
+        <input type="text" id="input_name">
+        <button type="button"  id="input_btn">Submit</button>
+    </div>
+    <div class="container" style="display: none;">
         <!--
            <div class="message right">Harry:hey how are you?</div>
         <div class="message left">Rohan:Fine bro </div>
@@ -24,7 +29,7 @@
         
     </div>
 
-    <div class="send">
+    <div class="send" style="display: none;">
         <form action="#" id="send-container">
             <input type="text" name="messageInp" id="messageInp">   
             <button class="btn" type="submit">Send</button>

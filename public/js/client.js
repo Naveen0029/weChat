@@ -1,10 +1,13 @@
 
-const socket = io('http://localhost:3000');
+const socket = io();
 
 const form=document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
 const messageContainer = document.querySelector(".container");
-
+const nameBar= document.querySelector("#name_bar");
+const userBtn=document.querySelector("#input_btn");
+const inputName=document.querySelector('#input_name');
+const Send=document.querySelector('.send');
 
 //play sound when a user write the message
 function play() {
@@ -35,12 +38,19 @@ form.addEventListener('submit',(e)=>{
    
 })
 //Take name and send the info to server
-const name=prompt("Enter your name to join");
-socket.emit('new-user-joined',name);
+
+userBtn.addEventListener('click',()=>{
+    name=inputName.value;
+    if(name=='')return;
+    nameBar.style.display="none";
+    messageContainer.style.display="block";
+    Send.style.display="block";
+    socket.emit('new-user-joined',name);
+});
 
 //server send the info of a use who recently joined
 socket.on('user-joined',name=>{
-    append(`${name} joined the chat`,'right');  
+    append(`${name}:joined the chat`,'right');  
 })
 
 //server send the msg send by the user
